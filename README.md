@@ -8,7 +8,7 @@ This script automates debugging setup and statistics collection from Centreon’
 
 ### 📁 Configuration
 - Reads `/etc/default/gorgoned` to extract current `severity` level (via 5th `=` split — *likely a typo; should be `-f2`*).
-- Assumes Gorgone HTTP API runs on `localhost:8085` (verify port in `40-gorgoned.yaml`).
+- Assumes Gorgone HTTP API runs on `localhost:8085` (verify port in `/etc/centreon-gorgone/config.d/40-gorgoned.yaml`).
 
 ---
 
@@ -27,7 +27,7 @@ This script automates debugging setup and statistics collection from Centreon’
 
 ### 🔍 Post-Collection Checks
 - Lists running `gorgone` processes (`ps -aux | grep gorgone`).
-- Extracts last 300 lines of `[statistics]` module logs → saves to `log_gorgone_statistics.txt`.
+- Extracts last 300 lines of `[statistics]` module logs → saves to `/tmp/log_gorgone_statistics.txt`.
 
 ---
 
