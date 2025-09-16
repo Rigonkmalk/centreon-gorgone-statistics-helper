@@ -19,6 +19,12 @@ check_debug() {
         sleep 5
 }
 
+restore_debug_to_error() {
+    echo "put back to error gorgoned.service "
+    sed -i "s/severity=debug/severity=error/" $file
+    systemctl restart gorgoned.service
+}
+
 # force an engine statistic collection from gorgone, and store the token given by the api in a variable
 # note that the port may need to be changed depeding on you configuration, see gorgoned configuration to find you port (in 40-gorgoned.yaml)
 
@@ -43,3 +49,5 @@ ps -aux | grep gorgone
 
 echo "put last 300 lines of logs from gorgoned.log for gorgone-statistics module into /tmp/log_gorgone_statistics.txt"
 tail -n 300 /var/log/centreon-gorgone/gorgoned.log | grep "\[statistics\]" > /tmp/log_gorgone_statistics.txt
+
+restore_debug_to_error
