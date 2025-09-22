@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # args
 
@@ -50,4 +50,5 @@ ps -aux | grep gorgone
 echo "put last 300 lines of logs from gorgoned.log for gorgone-statistics module into /tmp/log_gorgone_statistics.txt"
 tail -n 300 /var/log/centreon-gorgone/gorgoned.log | grep "\[statistics\]" > /tmp/log_gorgone_statistics.txt
 
+echo "restore debug to error for gorgone"
 restore_debug_to_error
